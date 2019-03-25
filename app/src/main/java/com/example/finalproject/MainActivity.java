@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.main_menu_nav, menu);
+        getMenuInflater().inflate(R.menu.menu, menu);
         return true;
     }
 
@@ -65,23 +65,23 @@ public class MainActivity extends AppCompatActivity {
 
         switch(item.getItemId()){
 
-            case R.id.dictionaryActivityMenuItem:
+            case R.id.dictionaryMenuItem:
                 nextPage = new Intent(MainActivity.this, DictionaryActivity.class);
                 startActivity(nextPage);
                 break;
 
-            case R.id.newsfeedActivityMenuItem:
+            case R.id.newsMenuItem:
                 nextPage = new Intent(MainActivity.this, NewsActivity.class);
                 startActivity(nextPage);
                 break;
 
-            case R.id.flightStatusTrackerMenuItem:
+            case R.id.trackerMenuItem:
                 nextPage = new Intent(MainActivity.this, FlightTrackerActivity.class);
                 startActivity(nextPage);
                 break;
 
 
-            case R.id.newYorkTimesMenuItem:
+            case R.id.NYTMenuItem:
                 nextPage = new Intent(MainActivity.this, NYTArticleActivity.class);
                 startActivity(nextPage);
                 break;

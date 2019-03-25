@@ -24,7 +24,7 @@
         app:showAsAction="always"></item>
     <item
         android:id="@+id/NYTMenuItem"
-        android:icon="@drawable/NYT"
+        android:icon="@drawable/nyt"
         android:orderInCategory="30"
         android:title="New York Times Article"
         app:showAsAction="always"></item>
