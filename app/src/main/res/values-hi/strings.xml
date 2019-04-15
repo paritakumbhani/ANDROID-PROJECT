@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">अंतिम परियोजनाt</string>
+    <string name="dictionary">मरियम वेबस्टर शब्दकोश</string>
+    <string name="news">समाचार फ़ीड</string>
+    <string name="tracker">फ्लाइट स्टेटस ट्रैकर</string>
+    <string name="NYT">न्यूयॉर्क टाइम्स अनुच्छेद खोज</string>
+
+    //New york times search
+    <string name="Y_search_hint">यहाँ ढूँढे</string>
+
+
+</resources>

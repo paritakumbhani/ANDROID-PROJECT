@@ -5,6 +5,13 @@
     <string name="tracker">Flight Status tracker</string>
     <string name="NYT">New York Times Article Search</string>
 
+//New york times search
+    <string name="Y_search">Search News</string>
+    <string name="Y_Button">Search</string>
+    <string name="Y_search_hint">search here</string>
+
+
+
     //dictionary
     <string name="d_search_hint">Enter a word here</string>
     <string name="d_save_button">Save</string>
