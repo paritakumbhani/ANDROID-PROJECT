@@ -4,4 +4,14 @@
     <string name="news">News Feed</string>
     <string name="tracker">Flight Status tracker</string>
     <string name="NYT">New York Times Article Search</string>
+
+    //dictionary
+    <string name="d_search_hint">Enter a word here</string>
+    <string name="d_save_button">Save</string>
+    <string name="d_delete_button">Delete</string>
+    <string name="d_help_tittle">Info And Help</string>\
+    <string name="d_help_text">Author: Vinay Patel \n Version: 1.0 \n Instructions: To Search any term, type a term in search box and click on search button. To save a word, Tap on the defination and it will get up a option to save or delete in storage. To see all the saved term or delete saved term click on the saved terms button. </string>
+<string name="d_save_activity">Saved Terms</string>
+
+
 </resources>
