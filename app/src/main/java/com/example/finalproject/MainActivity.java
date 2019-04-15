@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
 
         NYT = findViewById(R.id.NYT);
         NYT.setOnClickListener(c -> {
-            Intent nextPage = new Intent(MainActivity.this, NYTArticleActivity.class);
+            Intent nextPage = new Intent(MainActivity.this,  NYTArticle.class);
             startActivity(nextPage);
         });
 
@@ -82,7 +82,7 @@ public class MainActivity extends AppCompatActivity {
 
 
             case R.id.NYTMenuItem:
-                nextPage = new Intent(MainActivity.this, NYTArticleActivity.class);
+                nextPage = new Intent(MainActivity.this, NYTArticle.class);
                 startActivity(nextPage);
                 break;
 

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".DictionaryActivity">
+
+
+    <ProgressBar
+        android:id="@+id/YProgressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:visibility="visible" />
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:layout_alignParentTop="true"/>
+
+    <EditText
+        android:id="@+id/SearchBox"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:hint="@string/Y_search_hint"
+        android:inputType="textAutoComplete"
+        android:layout_alignParentStart="true"
+        android:layout_below="@id/toolbar"/>
+
+
+
+    <ImageButton
+        android:id="@+id/SearchButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/toolbar"
+        android:layout_toEndOf="@id/SearchBox"
+        android:src="@android:drawable/ic_menu_search"/>
+
+    <ListView
+        android:id="@+id/newslistview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentStart="true"
+        android:layout_below="@id/SearchBox" />
+
+
+</RelativeLayout>
