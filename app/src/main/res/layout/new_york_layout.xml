@@ -3,57 +3,49 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".DictionaryActivity">
 
+
     <ProgressBar
-        android:id="@+id/DProgressBar"
+        android:id="@+id/YProgressBar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:visibility="invisible" />
+        android:visibility="visible" />
 
     <android.support.v7.widget.Toolbar
-        android:id="@+id/DToolbar"
+        android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/colorPrimary"
         android:layout_alignParentTop="true"/>
 
     <EditText
-        android:id="@+id/DSearchBox"
-        android:layout_width="216dp"
-        android:layout_height="55dp"
-        android:layout_below="@id/DToolbar"
+        android:id="@+id/SearchBox"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:hint="@string/Y_search_hint"
+        android:inputType="textAutoComplete"
         android:layout_alignParentStart="true"
-        android:hint="@string/d_search_hint"
-        android:inputType="textAutoComplete" />
+        android:layout_below="@id/toolbar"/>
 
 
 
     <ImageButton
-        android:id="@+id/DSearchButton"
+        android:id="@+id/SearchButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/DToolbar"
-        android:layout_toEndOf="@id/DSearchBox"
-        android:src="@drawable/dictionary_search"/>
-
-    <Button
-        android:id="@+id/DSavedFile"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/DToolbar"
-        android:layout_alignEnd="@id/DSearchButton"
-        android:layout_marginTop="2dp"
-        android:layout_marginEnd="-135dp"
-        android:text="@string/d_save_activity" />
+        android:layout_below="@id/toolbar"
+        android:layout_toEndOf="@id/SearchBox"
+        android:src="@android:drawable/ic_menu_search"/>
 
     <ListView
-        android:id="@+id/DListView"
+        android:id="@+id/newslistview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_alignParentStart="true"
-        android:layout_below="@id/DSearchBox" />
+        android:layout_below="@id/SearchBox" />
 
 
 </RelativeLayout>

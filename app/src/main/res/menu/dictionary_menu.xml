@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <item
+        android:id="@+id/newsMenuItem"
+        android:icon="@drawable/news"
+        android:title="News Feed"
+        android:orderInCategory="20"
+        app:showAsAction="always"></item>
+
+    <item
+        android:id="@+id/trackerMenuItem"
+        android:icon="@drawable/tracker"
+        android:orderInCategory="30"
+        android:title="Flight Status tracker"
+        app:showAsAction="always"></item>
+
+    <item
+        android:id="@+id/NYTMenuItem"
+        android:icon="@drawable/nyt"
+        android:orderInCategory="30"
+        android:title="New York Times Article"
+        app:showAsAction="always"></item>
+
+    <item
+        android:id="@+id/dictionary_help"
+        android:icon="@drawable/dictionary_menu"
+        android:orderInCategory="30"
+        android:title="Help"
+        app:showAsAction="never"></item>
+
+
+
+</menu>
