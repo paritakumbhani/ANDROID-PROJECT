@@ -1,13 +1,13 @@
 <resources>
-<string name="app_name">final project</string>
 
-<string name="dictionary">Merriam Webster Dictionary</string>
-<string name="news">News Feed</string>
 
-<string name="tracker">Flight Status tracker</string>
+
+
+
+
 <string name="title">title</string>
 <string name="text">text</string>
-<string name="NYT">New York Times Article Search</string>
+
 <string name="delete">delete</string>
 <string name="text1">News Feed</string>
 <string name="newss">search news</string>

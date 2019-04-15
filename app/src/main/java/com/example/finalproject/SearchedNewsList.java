@@ -3,6 +3,7 @@ package com.example.finalproject;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -26,7 +27,6 @@ import java.net.URL;
 import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
-import android.support.design.widget.Snackbar;
 public class SearchedNewsList extends AppCompatActivity {
 
     private String searchedWord;
@@ -109,7 +109,7 @@ Toolbar toolbar;
 
 
             case R.id.NYTMenuItem:
-                nextPage = new Intent(SearchedNewsList.this, NYTArticleActivity.class);
+                nextPage = new Intent(SearchedNewsList.this, NYTArticle.class);
                 startActivity(nextPage);
                 break;
             case R.id.help:
