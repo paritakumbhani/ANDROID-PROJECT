@@ -21,4 +21,11 @@
 <string name="d_save_activity">Saved Terms</string>
 
 
+
+//New york times search
+    <string name="Y_search">Search News</string>
+    <string name="Y_Button">Search</string>
+    <string name="Y_search_hint">search here</string>
+
+
 </resources>
