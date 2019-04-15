@@ -11,7 +11,6 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -101,7 +100,7 @@ public class DictionaryActivity extends AppCompatActivity {
 
         listView.setOnItemClickListener((list, item, position, id) -> {
             Bundle dataToPass = new Bundle();
-            dataToPass.putLong("ID", definitionList.get(position).getID());
+            dataToPass.putLong("ID", definitionList.get(position).getid());
             dataToPass.putString("Title", definitionList.get(position).getTitle());
             dataToPass.putString("Definition", definitionList.get(position).getDefinition());
 
@@ -252,7 +251,7 @@ public class DictionaryActivity extends AppCompatActivity {
                 break;
 
             case R.id.NYTMenuItem:
-                nextPage = new Intent(DictionaryActivity.this, NYTArticleActivity.class);
+                nextPage = new Intent(DictionaryActivity.this, NYTArticle.class);
                 startActivity(nextPage);
                 break;
 

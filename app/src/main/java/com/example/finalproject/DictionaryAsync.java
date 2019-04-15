@@ -42,22 +42,22 @@ public class DictionaryAsync extends AsyncTask<String, Integer, String[]> {
             xpp.nextTag();
 
 
-            int i = -1;
+
             while (xpp.getEventType() != XmlPullParser.END_DOCUMENT) {
                 if (xpp.getEventType() == XmlPullParser.START_TAG) {
                     String tagName = xpp.getName();
                     if (tagName.equals("entry")) {
 
-                        i++;
+
                         definition.add(new Definition());
-                        definition.get(i).setTitle(xpp.getAttributeValue(null, "id"));
+                        definition.get(xpp.getEventType()).setTitle(xpp.getAttributeValue(null, "id"));
                         publishProgress(25);
 
                     }
 
                     if (tagName.equals("dt")) {
                         xpp.next();
-                        definition.get(i).setDefinition(xpp.getText());
+                        definition.get(xpp.getEventType()).setDefinition(xpp.getText());
                         publishProgress(50);
                     }
                 }

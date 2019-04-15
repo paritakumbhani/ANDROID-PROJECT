@@ -8,9 +8,9 @@ public class Definition {
 
     public Definition(Long id, String title, String definition) {
 
-        this.id = id;
-        this.title = title;
-        this.definition = definition;
+        this.id = id;//id
+        this.title = title;//title
+        this.definition = definition;//definition
 
     }
 
@@ -21,7 +21,11 @@ public class Definition {
 
     }
 
-    public Long getID() {
+    /**
+     * getid
+     * @return
+     */
+    public Long getid() {
 
         return id;
     }
