@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
 
         news = findViewById(R.id.news);
         news.setOnClickListener( c -> {
-            Intent nextPage = new Intent(MainActivity.this, NewsActivity.class);
+            Intent nextPage = new Intent(MainActivity.this, NewsFeedCover.class);
             startActivity(nextPage);
         });
 
@@ -71,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
                 break;
 
             case R.id.newsMenuItem:
-                nextPage = new Intent(MainActivity.this, NewsActivity.class);
+                nextPage = new Intent(MainActivity.this, NewsFeedCover.class);
                 startActivity(nextPage);
                 break;
 

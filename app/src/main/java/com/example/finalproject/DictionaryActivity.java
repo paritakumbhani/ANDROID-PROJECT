@@ -1,4 +1,6 @@
 package com.example.finalproject;
 
-public class DictionaryActivity {
+import android.support.v7.app.AppCompatActivity;
+
+public class DictionaryActivity  extends AppCompatActivity {
 }

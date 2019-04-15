@@ -1,4 +1,6 @@
 package com.example.finalproject;
 
-public class NYTArticleActivity {
+import android.support.v7.app.AppCompatActivity;
+
+public class NYTArticleActivity extends AppCompatActivity {
 }

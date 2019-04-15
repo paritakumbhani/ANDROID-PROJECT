@@ -1,4 +1,6 @@
 package com.example.finalproject;
 
-public class FlightTrackerActivity {
+import android.support.v7.app.AppCompatActivity;
+
+public class FlightTrackerActivity extends AppCompatActivity {
 }
