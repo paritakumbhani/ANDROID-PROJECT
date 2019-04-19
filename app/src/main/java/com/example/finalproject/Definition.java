@@ -23,6 +23,7 @@ public class Definition {
 
     /**
      * getid
+     *
      * @return
      */
     public Long getid() {
@@ -30,27 +31,40 @@ public class Definition {
         return id;
     }
 
-
+    /**
+     * get title
+     * @return
+     */
     public String getTitle() {
 
         return title;
     }
 
+    /**
+     * set title
+     * @param title
+     */
     public void setTitle(String title) {
 
         this.title = title;
     }
 
-
+    /**
+     * get definition
+     * @return
+     */
     public String getDefinition() {
 
         return definition;
     }
 
+    /**
+     * set defination
+     * @param definition
+     */
     public void setDefinition(String definition) {
 
         this.definition = definition;
     }
-
 
 }

@@ -10,4 +10,10 @@
     <string name="Y_search_hint">यहाँ ढूँढे</string>
 
 
+    <string name="d_search_hint">यहां एक शब्द दर्ज करें</string>
+    <string name="d_save_button">बचाना</string>
+    <string name="d_delete_button">हटाना</string>
+    <string name="d_help_tittle">जानकारी और मदद</string>
+    <string name="d_help_text">लेखक: विनय पटेल \ n संस्करण: 1.0 \ n निर्देश: किसी भी शब्द को खोजने के लिए, खोज बॉक्स में एक शब्द लिखें और खोज बटन पर क्लिक करें। किसी शब्द को सहेजने के लिए, डिफिनेशन पर टैप करें और स्टोरेज में सेव या डिलीट करने का विकल्प मिलेगा। सभी सहेजे गए टर्म या डिलीट किए गए टर्म को देखने के लिए सेव्ड टर्म्स बटन पर क्लिक करें।</string>
+    <string name="d_save_activity">सहेजे गए नियम</string>
 </resources>

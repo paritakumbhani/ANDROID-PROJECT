@@ -18,7 +18,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ListView;
-import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -30,7 +30,6 @@ public class DictionaryActivity extends AppCompatActivity {
     ImageButton searchButton;
     Toolbar toolbar;
     Button save;
-    ProgressBar progres;
     ListView listView;
     boolean saved;
     DictionaryDatabaseHelper helper;
@@ -55,39 +54,38 @@ public class DictionaryActivity extends AppCompatActivity {
         searchButton = findViewById(R.id.DSearchButton);
         toolbar = findViewById(R.id.DToolbar);
         setSupportActionBar(toolbar);
-        progres = findViewById(R.id.DProgressBar);
+
         listView = findViewById(R.id.DListView);
         definitionList = new ArrayList<>();
         save = findViewById(R.id.DSavedFile);
 
         //is tablet
         boolean isTablet = findViewById(R.id.fragmentLayout) != null;
-
         helper = new DictionaryDatabaseHelper(this);
         db = helper.getWriteableDatabase();
         SharedPreferences sp = getApplicationContext().getSharedPreferences("FileName", 0);
         SharedPreferences.Editor editor = sp.edit();
 
-
+/**
+ * toggle between saved words and search from api
+ */
         save.setOnClickListener(c -> {
             if (saved == false) {
                 saved = true;
             } else {
                 saved = false;
             }
-            editor.putBoolean("DictState", saved);
+            editor.putBoolean("DictionaryS", saved);
             editor.commit();
             saved();
         });
-
-
 
 
         myAdapter = new DictionaryAdapter(getApplicationContext(), R.layout.activity_dictionary_listview, definitionList);
         listView.setAdapter(myAdapter);
 
         searchButton.setOnClickListener(c -> {
-            progres.setVisibility(View.VISIBLE);
+
             if (search.getText() != null) {
                 editor.putString("search", String.valueOf(search.getText()));
                 editor.commit();
@@ -98,6 +96,9 @@ public class DictionaryActivity extends AppCompatActivity {
             }
         });
 
+        /**
+         * code from professor
+         */
         listView.setOnItemClickListener((list, item, position, id) -> {
             Bundle dataToPass = new Bundle();
             dataToPass.putLong("ID", definitionList.get(position).getid());
@@ -106,15 +107,11 @@ public class DictionaryActivity extends AppCompatActivity {
 
             if (isTablet) {
 
-                DictionaryFragement dFragment = new DictionaryFragement(); //add a DetailFragment
-                dFragment.setArguments(dataToPass); //pass it a bundle for information
-
-                dFragment.setTablet(true);  //tell the fragment if it's running on a tablet or not
-                getSupportFragmentManager()
-                        .beginTransaction()
-                        .add(R.id.fragmentLayout, dFragment) //Add the fragment in FrameLayout
-                        .addToBackStack("AnyName") //make the back button undo the transaction
-                        .commit(); //actually load the fragment.
+                DictionaryFragement dFragment = new DictionaryFragement();
+                dFragment.setArguments(dataToPass);
+                dFragment.setTablet(true);
+                getSupportFragmentManager().beginTransaction()
+                        .add(R.id.fragmentLayout, dFragment).addToBackStack("AnyName").commit();
             } else //isPhone
             {
 
@@ -125,10 +122,11 @@ public class DictionaryActivity extends AppCompatActivity {
             }
         });
 
-        saved = sp.getBoolean("DictState", false);
+        saved = sp.getBoolean("DictionaryS", false);
         saved();
 
-        search.setText(sp.getString("DictSearch", null));
+        //set the text for search
+        search.setText(sp.getString("DictionarySearch", null));
         if (search.getText() != null) {
             definitionList.clear();
             DictionaryAsync query = new DictionaryAsync();
@@ -137,24 +135,32 @@ public class DictionaryActivity extends AppCompatActivity {
         }
 
         if (saved == true) {
-            Cursor csr = db.rawQuery("SELECT * from " + TABLE_NAME, null);
-            csr.moveToFirst();
-            for (int i = 0; i < csr.getCount(); i++) {
-                long idnum = csr.getLong(csr.getColumnIndex("id"));
-                String title = csr.getString(csr.getColumnIndex(COL_TITLE));
-                String definition = csr.getString(csr.getColumnIndex(COL_DEFINITION));
-                addList(idnum, title, definition);
-                csr.moveToNext();
+            Cursor cursor = db.rawQuery("SELECT * from " + TABLE_NAME, null);
+            cursor.moveToFirst();
+
+            for (int i = 0; i < cursor.getCount(); i++) {
+                long id = cursor.getLong(cursor.getColumnIndex("id"));
+                String title = cursor.getString(cursor.getColumnIndex(COL_TITLE));
+                String definition = cursor.getString(cursor.getColumnIndex(COL_DEFINITION));
+                addList(id, title, definition);
+                cursor.moveToNext();
             }
         }
     }
 
+    /**
+     * saved list
+     * get the list of searched word
+     */
     public void saved() {
         if (saved == true) {
 
             searchButton.setEnabled(false);
             definitionList.clear();
             myAdapter.notifyDataSetChanged();
+
+            Toast toast = Toast.makeText(getApplicationContext(), "geting data from saved list", Toast.LENGTH_SHORT);
+            toast.show();
 
             Cursor cursor = db.rawQuery("SELECT * from " + TABLE_NAME, null);
             cursor.moveToFirst();
@@ -175,7 +181,6 @@ public class DictionaryActivity extends AppCompatActivity {
             searchButton.setEnabled(true);
             definitionList.clear();
             myAdapter.notifyDataSetChanged();
-
             DictionaryAsync query = new DictionaryAsync();
             query.execute("https://www.dictionaryapi.com/api/v1/references/sd3/xml/" + search.getText() + "?key=4556541c-b8ed-4674-9620-b6cba447184f");
             myAdapter.notifyDataSetChanged();
@@ -183,24 +188,42 @@ public class DictionaryActivity extends AppCompatActivity {
         }
     }
 
-    void addList(Long id, String title, String longDef) {
-        Definition definition = new Definition(id, title, longDef);
+    /**
+     *
+     * @param id
+     * @param title
+     * @param definat
+     */
+    void addList(Long id, String title, String definat) {
+
+        Definition definition = new Definition(id, title, definat);
         definitionList.add(definition);
     }
 
+    /**
+     *
+     * @param title
+     * @param definition
+     */
     public void definationSave(String title, String definition) {
 
         //helped by professor
         ContentValues cv = new ContentValues();
         cv.put(helper.COL_TITLE, title);
         cv.put(helper.COL_DEFINITION, definition);
+
         long id = db.insert(TABLE_NAME, "ColumnName", cv);
         if (saved == true) {
+
             addList(id, title, definition);
             myAdapter.notifyDataSetChanged();
         }
     }
 
+    /**
+     *
+     * @param id
+     */
     public void deleteDefinitionId(int id) {
 
         //copied from my lab8
@@ -219,7 +242,6 @@ public class DictionaryActivity extends AppCompatActivity {
                 cursor.moveToNext();
             }
         }
-
         myAdapter.notifyDataSetChanged();
     }
 
@@ -232,7 +254,11 @@ public class DictionaryActivity extends AppCompatActivity {
         return true;
     }
 
-
+    /**
+     *
+     * @param item
+     * @return
+     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
@@ -272,18 +298,25 @@ public class DictionaryActivity extends AppCompatActivity {
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
 
-        builder.setTitle(R.string.d_help_text);
-        builder.setMessage("")
+        builder.setTitle(R.string.d_help_tittle);
+        builder.setMessage(R.string.d_help_text);
 
-                .setNegativeButton("Ok", new DialogInterface.OnClickListener() {
+                builder.setNegativeButton("Ok", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                     }
-                }).setView(middle);
+                });
 
         builder.create().show();
 
     }
 
+    /**
+     * result to initiate save and delete
+     * and load the data from ID
+     * @param requestCode
+     * @param resultCode
+     * @param data
+     */
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
@@ -306,7 +339,6 @@ public class DictionaryActivity extends AppCompatActivity {
             }
         }
     }
-
 
 
 }
