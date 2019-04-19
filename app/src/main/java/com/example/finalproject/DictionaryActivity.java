@@ -267,7 +267,7 @@ public class DictionaryActivity extends AppCompatActivity {
         switch (item.getItemId()) {
 
             case R.id.newsMenuItem:
-                nextPage = new Intent(DictionaryActivity.this, NewsActivity.class);
+                nextPage = new Intent(DictionaryActivity.this, NewsFeedCover.class);
                 startActivity(nextPage);
                 break;
 

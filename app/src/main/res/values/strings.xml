@@ -1,10 +1,4 @@
 <resources>
-
-
-
-
-
-
 <string name="title">title</string>
 <string name="text">text</string>
 
@@ -32,6 +26,8 @@
     <string name="Y_search">Search News</string>
     <string name="Y_Button">Search</string>
     <string name="Y_search_hint">search here</string>
+    <string name="Y_help_info">Info and help</string>
+    <string name="Y_help">Author name:Parita Kumbhani, Activity version:v1.0.0, Instruction:This is alert</string>
 
 
 </resources>

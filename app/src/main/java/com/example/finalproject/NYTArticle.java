@@ -1,6 +1,7 @@
 package com.example.finalproject;
 
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.StrictMode;
@@ -136,7 +137,7 @@ public class NYTArticle extends AppCompatActivity {
                 break;
 
             case R.id.newsMenuItem:
-                nextPage = new Intent(NYTArticle.this, NewsActivity.class);
+                nextPage = new Intent(NYTArticle.this, NewsFeedCover.class);
                 startActivity(nextPage);
                 break;
 
@@ -167,9 +168,14 @@ public class NYTArticle extends AppCompatActivity {
         View middle = getLayoutInflater().inflate(R.layout.nyt_alert_box, null);
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        //referred  from vinay
+        builder.setTitle(R.string.Y_help_info);
+        builder.setMessage(R.string.Y_help);
 
-        builder.setMessage("Author name:Parita Kumbhani, Activity version:v1.0.0, Instruction:This is alert");
-
+        builder.setNegativeButton("Ok", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+            }
+        });
 
 
         builder.create().show();
